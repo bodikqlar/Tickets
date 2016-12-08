@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '~> 5.0.0'
 
 # DB
-gem 'mysql2'
+gem 'mysql2', '~> 0.4.5'
 
 # Token
 gem 'jwt'
@@ -41,6 +41,9 @@ gem 'bcrypt', '~> 3.1.7'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'factory_girl_rails', '~> 4.7.0'
+  gem 'rspec-rails', '~> 3.5'
+  gem 'faker', '~> 1.6.6'
 end
 
 group :development do
@@ -54,3 +57,7 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+group :test do
+  gem 'shoulda-matchers', '~> 3.1'
+end
