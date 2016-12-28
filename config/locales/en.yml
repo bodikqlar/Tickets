@@ -21,3 +21,10 @@
 
 en:
   hello: "Hello world"
+
+  controllers:
+    user:
+      destroyed: 'User has been successfully deleted.'
+      created: 'User has been successfully created.'
+      updated: 'User has been successfully updated.'
+

@@ -9,3 +9,7 @@ For MySQL installation on Linux distributive:
 create db
 1) rake db:create;
 2) rake db:migrate;
+
+
+cd tickets_frontend 
+npm install
