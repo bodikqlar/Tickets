@@ -4,12 +4,13 @@ RSpec.describe Api::V1::UsersController, type: :controller do
   describe "GET #index" do
     it 'receives all user' do
       users = create_list(:user, 2, role: :standard)
-      excpected_data = json_data users.map{|u| user_response(u)}
+      expected_data = json_data users.map{|u| user_response(u)}
+
       get :index, format: :json
 
       expect(response).to have_http_status(:success)
       expect(response).to render_template("api/v1/users/index")
-      expect(json_response).to eq(excpected_data)
+      expect(json_response).to eq(expected_data)
     end
   end
 

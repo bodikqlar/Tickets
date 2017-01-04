@@ -14,6 +14,7 @@ class Ticket < ApplicationRecord
 
 #---------Callbacks--------------
 
+  before_validation :assign_assignee, on: :create
   after_update :add_to_history
 
 #---------Validations--------------
@@ -24,5 +25,11 @@ class Ticket < ApplicationRecord
 
   def add_to_history
     ticket_histories.create(user: assignee, ticket_status: ticket_status)
+  end
+
+  private
+
+  def assign_assignee
+    self.assignee = owner unless assignee
   end
 end

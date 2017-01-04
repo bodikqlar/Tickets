@@ -28,3 +28,8 @@ en:
       created: 'User has been successfully created.'
       updated: 'User has been successfully updated.'
 
+    ticket:
+      destroyed: 'Ticket has been successfully deleted.'
+      created: 'Ticket has been successfully created.'
+      updated: 'Ticket has been successfully updated.'
+

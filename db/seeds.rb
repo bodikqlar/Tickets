@@ -5,5 +5,23 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.create(email: 'standart@user.com', first_name: 'Bruce', last_name: 'Wayne', password: '12345678')
+u = User.create(email: 'standart@user.com', first_name: 'Bruce', last_name: 'Wayne', password: '12345678')
 
+TicketStatus.create([
+  { title: 'To Do' },
+  { title: 'In Progress' },
+  { title: 'In Review' },
+  { title: 'Resolved' },
+  { title: 'In Test' },
+  { title: 'Closed' }
+])
+
+Ticket.create([
+  {
+    title: 'test',
+    owner: u,
+    description: 'Lorem ipsum',
+    urgency: 'high',
+    ticket_status: TicketStatus.all.sample
+  }
+])

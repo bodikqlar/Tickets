@@ -21,6 +21,10 @@ class User < ApplicationRecord
 #----------Instance methods------
 
   def tickets
-    own_tickets.or(assigned_tickets).distinct
+    own_tickets.or(assigned_tickets).preload(:owner, :ticket_status, :assignee).distinct
+  end
+
+  def as_json(options = {})
+    super(except: %i(password_digest)).merge(options)
   end
 end

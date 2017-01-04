@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::API
+  include ActionController::Helpers
+  include ActionController::Caching
+
   before_action :authenticate_request
   attr_reader :current_user
 
@@ -25,6 +28,10 @@ class ApplicationController < ActionController::API
     Rails.logger.error "exception when retrieving appointments: #{e.message}, #{e.backtrace.join"\n"}"
 
     render json: { success: false, message: e.to_s }, status: :internal_server_error
+  end
+
+  def record_not_found_handler(e)
+    render json: { message: 'not found' }, status: :not_found
   end
 
   def handle_validation_error(error)

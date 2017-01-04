@@ -1,7 +1,11 @@
 class Api::V1::TicketsController < ApplicationController
+  before_filter :ticket, only: %i(show destroy update)
 
   def index
-    @tickets = current_user.tickets
+    ticket_statuses = TicketStatus.all
+    tickets = current_user.tickets
+
+    @data = TicketJsonGenerator.index(ticket_statuses, tickets)
   end
 
   def create
@@ -13,6 +17,7 @@ class Api::V1::TicketsController < ApplicationController
 
   def destroy
     @ticket.destroy
+
     render json: {
       success: true,
       message: I18n.t('controllers.ticket.destroyed')
@@ -26,7 +31,7 @@ class Api::V1::TicketsController < ApplicationController
   private
 
   def ticket
-    @ticket = Ticket.find(params[:id])
+    @ticket = current_user.tickets.find(params[:id])
   end
 
   def ticket_params

@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe TicketStatus, type: :model do
+  it 'has a valid factory' do
+    expect(build :ticket_status).to be_valid
+  end
+
   context 'associations' do
     it { is_expected.to have_many(:tickets) }
   end

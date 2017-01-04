@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Ticket, type: :model do
+  it 'has a valid factory' do
+    expect(build :ticket).to be_valid
+  end
+
   context 'associations' do
     it { is_expected.to belong_to(:assignee) }
     it { is_expected.to belong_to(:owner) }
