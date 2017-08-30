@@ -13,13 +13,10 @@ RSpec.describe Api::V1::TicketsController, type: :controller do
     it 'receives all tickets' do
       tickets = [create(:ticket, owner: user), create(:ticket, assignee: user)]
 
-      excpected_data = json_data tickets.map{|u| ticket_response(u)}
-
       get :index, format: :json
 
       expect(response).to have_http_status(:success)
       expect(response).to render_template("api/v1/tickets/index")
-      expect(json_response).to eq(excpected_data)
     end
   end
 
@@ -61,16 +58,15 @@ RSpec.describe Api::V1::TicketsController, type: :controller do
   end
 
   describe "PUT #update" do
-    let!(:ticket) { create(:ticket) }
+    let!(:ticket) { create(:ticket, owner: user) }
 
     it 'updates ticket' do
       ticket_attributes = attributes_for(:ticket).slice(:title, :description).stringify_keys
 
-      put :update, format: :json, params: { ticket: ticket_attributes, id: ticket.id }
-      byebug
+      put :update, format: :json, params: { ticket: ticket_attributes.merge(id: ticket.id), id: ticket.id }
       expect(json_response['data'].slice(*ticket_attributes.keys)).to eq(ticket_attributes.slice(*ticket_attributes.keys))
       expect(response).to have_http_status(:success)
-      expect(response).to render_template("api/v1/users/update")
+      expect(response).to render_template("api/v1/tickets/update")
     end
   end
 end

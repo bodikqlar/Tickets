@@ -1,5 +1,5 @@
 class Api::V1::TicketsController < ApplicationController
-  before_filter :ticket, only: %i(show destroy update)
+  before_action :ticket, only: %i(show destroy update)
 
   def index
     ticket_statuses = TicketStatus.all
@@ -9,7 +9,10 @@ class Api::V1::TicketsController < ApplicationController
   end
 
   def create
-    @ticket = current_user.own_tickets.create!(ticket_params.except(:id))
+    @ticket = current_user.own_tickets.create!(
+      ticket_params.except(:id)
+                   .merge({owner_id: current_user.id})
+    )
   end
 
   def show

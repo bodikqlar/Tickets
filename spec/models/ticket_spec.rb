@@ -28,7 +28,8 @@ RSpec.describe Ticket, type: :model do
     describe '#add_to_history' do
       it 'adds ticket to the history' do
         ticket = create :ticket
-        expect { ticket.add_to_history }.to change{TicketHistory.count}.by(1)
+        ticket_status = build_stubbed :ticket_status
+        expect { ticket.update(ticket_status: ticket_status) }.to change{TicketHistory.count}.by(1)
       end
     end
   end

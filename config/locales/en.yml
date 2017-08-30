@@ -33,3 +33,5 @@ en:
       created: 'Ticket has been successfully created.'
       updated: 'Ticket has been successfully updated.'
 
+    role:
+      changed: 'Role has been successfully changed.'

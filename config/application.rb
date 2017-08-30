@@ -10,6 +10,8 @@ module Tickets
   class Application < Rails::Application
     config.autoload_paths.push(Rails.root.join('lib'))
                          .push(Rails.root.join('app', 'validators'))
+                         .push(Rails.root.join('app', 'queries'))
+                         .push(Rails.root.join('app', 'pdf_renderers'))
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -23,3 +25,4 @@ module Tickets
 end
 
 Jbuilder.key_format camelize: :lower
+AffiliateTrackingClient::Tracker.aff_host = 'http://localhost'

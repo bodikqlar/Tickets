@@ -24,7 +24,12 @@ class Ticket < ApplicationRecord
 #---------Instance methods---------
 
   def add_to_history
-    ticket_histories.create(user: assignee, ticket_status: ticket_status)
+    ticket_histories.create(user: assignee, ticket_status: ticket_status) if changed.include?('ticket_status_id')
+  end
+
+#---------Class methds ------------
+
+  def self.closed_in_last_month
   end
 
   private

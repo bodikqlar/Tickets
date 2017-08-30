@@ -37,7 +37,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Use rack-cors for CORS requests
 gem 'rack-cors'
-
+gem 'prawn'
+gem 'prawn-table', '~> 0.1.0'
 gem 'require_all'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

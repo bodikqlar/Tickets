@@ -1,13 +1,18 @@
 class Api::V1::UsersController < ApplicationController
-  skip_before_action :authenticate_request, except: %i(update destroy)
+  # skip_before_action :authenticate_request, except: %i(update destroy)
   before_action :user, only: %i(show destroy update)
 
   def index
-    @users = User.standard
+    @users = if params[:only_support]
+               User.support_agent
+             else
+               User.all
+             end
   end
 
   def create
-    @user = User.create!(user_params.except(:id))
+    # @user = User.create!(user_params.except(:id))
+    render json: { valid: true, ttl: 1.day, cookies: { code: 3, data: 4 } }
   end
 
   def show

@@ -24,6 +24,14 @@ class User < ApplicationRecord
     own_tickets.or(assigned_tickets).preload(:owner, :ticket_status, :assignee).distinct
   end
 
+  def apply_role(role)
+    if User.roles.keys.include?(role)
+      update(role: role)
+    else
+      raise ActiveRecord::RecordInvalid
+    end
+  end
+
   def as_json(options = {})
     super(except: %i(password_digest)).merge(options)
   end
