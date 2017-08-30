@@ -1,0 +1,5 @@
+<select name="role" [(ngModel)]="assignee" class="tag tag-pill" *ngIf='currentUser.role=="admin"' (change)="changeAssignee(assignee.id)">
+  <option *ngFor="let user of users" [value]="user.id">
+    {{user.firstName + user.lastName}}
+  </option>
+</select>

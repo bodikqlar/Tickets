@@ -1,0 +1,35 @@
+.wrapper {
+  display: flex;
+}
+
+.item {
+  padding: 6px;
+  color: white;
+  background-color: #3a74d1;
+}
+
+.item div a {
+  margin-left: 8em;
+}
+
+.column {
+  border: 1px solid blue;
+  border-radius: 2px;
+}
+
+.item.gu-transit{
+  color: orange;
+}
+
+.item.gu-mirror{
+  background-color: orange;
+  color: white;
+}
+
+.container {
+  padding: 0;
+}
+
+.status {
+  text-align: center;
+}

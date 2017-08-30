@@ -1,0 +1,10 @@
+<div *ngIf='ticket'>
+  <h5>Title: {{ ticket.title }}</h5>
+  <h5>Urgency: {{ ticket.urgency }}</h5>
+  <h5>Description: {{ ticket.description }}</h5>
+  <h5>Owner: {{ ticket.owner.email }}</h5>
+  <h5>Assignee: {{ ticket.assignee.email }}</h5>
+  <h5>Ticket status: {{ ticket.ticketStatus.title }}</h5>
+  <a class='btn btn-danger' (click)='destroyTicket(ticket)'>Destroy</a>
+  <add-assignee [ticketId]='ticket.id'></add-assignee>
+</div>

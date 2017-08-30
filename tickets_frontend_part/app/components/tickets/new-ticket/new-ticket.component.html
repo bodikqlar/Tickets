@@ -1,0 +1,39 @@
+<div class="col-md-6 col-md-offset-3">
+  <div>{{ticket| json}}</div>
+  <h2>New Ticket</h2>
+  <form name="form" (ngSubmit)="createTicket()" #f="ngForm" novalidate="">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" class="form-control" name="title" [(ngModel)]="ticket.title" #title="ngModel" required />
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea class="form-control" name="description" [(ngModel)]="ticket.description" #description="ngModel" required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="estimate">Estimate</label>
+      <input type="text" class="form-control" name="estimate" [(ngModel)]="ticket.estimate" #estimate="ngModel" placeholder='4d 3h 1m' required />
+    </div>
+    <div class="form-group">
+      <label for="urgency">Urgency</label>
+      <select name="urgency" [(ngModel)]="ticket.urgency" *ngIf='ticketUrgencies' class="tag tag-pill" #urgency="ngModel" required>
+        <option *ngFor="let urgency of ticketUrgencies" [value]="urgency">
+          {{urgency}}
+        </option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="ticketStatusId">Ticket status</label>
+      <select name="ticketStatusId" [(ngModel)]="ticket.ticketStatusId" *ngIf='ticketStatuses' class="tag tag-pill" #ticketStatusId="ngModel" required>
+        <option *ngFor="let ticketStatus of ticketStatuses" [value]="ticketStatus.id">
+          {{ticketStatus.title}}
+        </option>
+      </select>
+    </div>
+    <div class="form-group">
+      <button [disabled]="loading || !f.form.valid" class="btn btn-primary">Save</button>
+      <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+      <a [routerLink]="['/login']" class="btn btn-link">Cancel</a>
+    </div>
+  </form>
+</div>

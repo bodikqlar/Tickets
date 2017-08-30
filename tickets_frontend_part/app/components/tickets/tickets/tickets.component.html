@@ -1,0 +1,30 @@
+<ul class="list-inline">
+  <li><a [routerLink]="['/users']">Users</a></li>
+  <li><a [routerLink]="['/tickets']">Tickets</a></li>
+</ul>
+<a class='btn btn-info'[routerLink]="['/closed_tickets']">
+  View closed in the last month tickets
+</a>
+<a class='btn btn-info'[routerLink]="['/tickets/new']">
+  New
+</a>
+<div class='wrapper' *ngIf='data'>
+  <div class='container column' *ngFor='let group of data'>
+    <h4 class='status'> {{ group.status }} </h4>
+  </div>
+</div>
+
+<div class='wrapper' *ngIf='data'>
+  <div class='container column' *ngFor='let group of data' [dragula]='"another-bag"' [dragulaModel]='group.tickets'>
+    <div *ngFor='let item of group.tickets' class='item'>
+      <h5>Title: {{ item.title }}</h5>
+      <h5>Urgency: {{ item.urgency }}</h5>
+      <div>Description: {{ item.description }}</div>
+      <div>Owner: {{ item.owner.email }}</div>
+      <div>Assignee: {{ item.assignee.email }}</div>
+      <div>
+        <a  class='btn btn-info'[routerLink]="['/tickets', item.id]">View</a>
+      </div>
+    </div>
+  </div>
+</div>

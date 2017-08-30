@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <base href="/" />
+    <title>Angular 2 User Registration and Login Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- bootstrap css -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- application css -->
+    <link href="css/app.css" rel="stylesheet" />
+    <link href="css/dragula.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="/node_modules/angular2-toaster/toaster.css" />
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome-4.7.0/css/font-awesome.css" />
+
+    <!-- polyfill(s) for older browsers -->
+    <script src="node_modules/core-js/client/shim.min.js"></script>
+    <script src="libs/deep-diff.js"></script>
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/reflect-metadata/Reflect.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+
+    <script src="systemjs.config.js"></script>
+    <script>
+      System.import('app').catch(function (err) { console.error(err); });
+    </script>
+</head>
+<body class='jumbotron'>
+  <app>Loading...</app>
+  <div id="footer">
+    <div class="container-fluid text-center copyrights">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="social">
+          <ul>
+            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/bogdan-oshovskyi-2129a5a2"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="mailto:qlarmore@gmail.com"><i class="fa fa-envelope"></i></a></li>
+          </ul>
+        </div>
+        <p>© 2017. All rights reserved. Designed by Bohdan Oshovskyi</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
